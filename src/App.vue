@@ -8,6 +8,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  created() {
+    this.$root.url = process.env.BASE_URL;
+    this.$root.api = process.env.API_URL;
+  }
+}
+</script>
+
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
