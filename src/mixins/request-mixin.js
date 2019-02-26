@@ -1,4 +1,4 @@
-export const apiRequestMixin = {
+export default {
   data() {
 
   },
@@ -7,9 +7,9 @@ export const apiRequestMixin = {
       return this.$http.create({
         baseURL: url,
         headers: {
-          'Content-type': 'application/json'
-        }
-      })
-    }
-  }
-}
+          'Content-type': 'application/json',
+        },
+      });
+    },
+  },
+};
