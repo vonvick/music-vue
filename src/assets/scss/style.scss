@@ -1,0 +1,16 @@
+@import './colors';
+@import '~bootstrap/scss/bootstrap';
+
+* {
+  font-family: proxima_nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+// Backgrounds
+.vnc-green-background {
+  background-color: $green;
+}
+
+// foreground
+.off-white {
+  color: $off-white;
+}
