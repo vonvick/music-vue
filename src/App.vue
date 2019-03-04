@@ -9,12 +9,7 @@
 </template>
 
 <script>
-export default {
-  created() {
-    this.$root.url = process.env.BASE_URL;
-    this.$root.api = process.env.API_URL;
-  }
-}
+export default {};
 </script>
 
 
