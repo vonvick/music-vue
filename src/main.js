@@ -1,5 +1,9 @@
+// External Libraries
 import Vue from 'vue';
 import axios from 'axios';
+import VeeValidate from 'vee-validate';
+
+// App Import
 import App from './App.vue';
 import router from './routes';
 import store from './store';
@@ -8,6 +12,7 @@ import './registerServiceWorker';
 // Styles
 import './assets/scss/style.scss';
 
+Vue.use(VeeValidate);
 Vue.config.productionTip = false;
 Vue.prototype.$http = axios;
 Vue.prototype.$appName = 'Vonvick Music';

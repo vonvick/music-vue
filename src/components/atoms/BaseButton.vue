@@ -4,6 +4,7 @@
     :class="classNames"
     :type="buttonType"
     @click="$emit('clicked')"
+    :disabled="disabled"
   >
     {{buttonText}}
   </button>
@@ -21,6 +22,9 @@ export default {
     },
     buttonText: {
       type: String,
+    },
+    disabled: {
+      type: Boolean,
     },
   },
 };
