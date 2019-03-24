@@ -124,7 +124,7 @@
               :buttonType="`submit`"
               :disabled="loading || errors.any()"
             >
-              LOG IN
+              SIGN UP
             </base-button>
           </div>
         </form>
