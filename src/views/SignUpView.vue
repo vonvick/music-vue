@@ -26,6 +26,7 @@
               v-validate="{ required: true, min: 2 }"
               :class="{'is-danger': errors.has('first_name')}"
               name="first_name"
+              id="firstName"
             />
             <span v-show="errors.has('first_name')" class="help is-danger-text">
               {{ errors.first('first_name') }}
@@ -41,6 +42,7 @@
               v-validate="{ required: true, min: 2 }"
               :class="{'is-danger': errors.has('last_name')}"
               name="last_name"
+              id="lastName"
             />
             <span v-show="errors.has('last_name')" class="help is-danger-text">
               {{ errors.first('last_name') }}
@@ -56,6 +58,7 @@
             v-validate="{ required: true, email: true }"
             :class="{'is-danger': errors.has('email')}"
             name="email"
+            id="email"
             />
             <span v-show="errors.has('email')" class="help is-danger-text">
               {{ errors.first('email') }}
@@ -72,6 +75,7 @@
               v-validate="{ required: true, min: 2 }"
               :class="{'is-danger': errors.has('username')}"
               name="username"
+              id="username"
             />
             <span v-show="errors.has('username')" class="help is-danger-text">
               {{ errors.first('username') }}
@@ -89,6 +93,7 @@
               :class="{'is-danger': errors.has('password')}"
               name="password"
               ref="password"
+              id="password"
             />
             <span v-show="errors.has('password')" class="help is-danger-text">
               {{ errors.first('password') }}
@@ -106,6 +111,7 @@
               :class="{'is-danger': errors.has('confirm_password')}"
               name="confirm_password"
               data-vv-as="password"
+              id="passwordConfirm"
             />
             <span v-show="errors.has('confirm_password')" class="help is-danger-text">
               {{ errors.first('confirm_password') }}
@@ -115,10 +121,11 @@
           <div class="form-group col-12">
             <base-button
               :classNames="`btn vnc-green-background off-white col-12`"
-              :buttonText="`LOG IN`"
               :buttonType="`submit`"
               :disabled="loading || errors.any()"
-            ></base-button>
+            >
+              LOG IN
+            </base-button>
           </div>
         </form>
 
@@ -140,7 +147,7 @@ import apiRequestMixin from '@/mixins/request-mixin';
 import BaseButton from '@/components/atoms/BaseButton.vue';
 
 export default {
-  name: 'signup-view',
+  name: 'sign-up-view',
   mixins: [apiRequestMixin],
   components: {
     BaseButton,

@@ -26,6 +26,7 @@
               v-validate="{ required: true, email: true }"
               :class="{'is-danger': errors.has('email')}"
               name="email"
+              id="email"
             />
             <span v-show="errors.has('email')" class="help is-danger-text">
               {{ errors.first('email') }}
@@ -42,6 +43,7 @@
               v-validate="{ required: true, min: 6}"
               :class="{'is-danger': errors.has('password')}"
               name="password"
+              id="password"
             />
             <span v-show="errors.has('password')" class="help is-danger-text">
               {{ errors.first('password') }}
@@ -51,10 +53,11 @@
           <div class="form-group col-12">
             <base-button
               :classNames="`btn vnc-green-background off-white col-12`"
-              :buttonText="`LOG IN`"
               :buttonType="`submit`"
               :disabled="loading || errors.any()"
-            ></base-button>
+            >
+              LOG IN
+            </base-button>
           </div>
         </form>
 
@@ -76,7 +79,7 @@ import apiRequestMixin from '@/mixins/request-mixin';
 import BaseButton from '@/components/atoms/BaseButton.vue';
 
 export default {
-  name: 'signup-view',
+  name: 'sign-up-view',
   mixins: [apiRequestMixin],
   components: {
     BaseButton,
