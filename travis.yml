@@ -1,0 +1,12 @@
+sudo: false
+language: javascript
+script: 
+  - yarn test:unit
+  - yarn run coveralls
+cache: yarn
+install:
+  - yarn install
+branches:
+  only:
+    - develop
+    - master
