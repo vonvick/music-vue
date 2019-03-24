@@ -6,12 +6,13 @@
     @click="$emit('clicked')"
     :disabled="disabled"
   >
-    {{buttonText}}
+    <slot></slot>
   </button>
 </template>
 
 <script>
 export default {
+  name: 'base-button',
   props: {
     classNames: {
       type: String,
@@ -19,9 +20,6 @@ export default {
     buttonType: {
       type: String,
       default: 'submit',
-    },
-    buttonText: {
-      type: String,
     },
     disabled: {
       type: Boolean,
