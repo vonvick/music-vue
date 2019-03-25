@@ -1,9 +1,10 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-shadow */
 const initialState = {
   email: '',
   firstName: '',
   lastName: '',
   username: '',
-  token: '',
   description: '',
   avatar: '',
   roleId: '',
