@@ -79,7 +79,7 @@ import apiRequestMixin from '@/mixins/request-mixin';
 import BaseButton from '@/components/atoms/BaseButton.vue';
 
 export default {
-  name: 'sign-up-view',
+  name: 'sign-in-view',
   mixins: [apiRequestMixin],
   components: {
     BaseButton,
