@@ -67,6 +67,8 @@ export default {
             expiry: responseHeaders.expiry,
           });
           this.loading = false;
+
+          this.$router.push('/');
         } catch (error) {
           this.loading = false;
           this.handleError(error);
