@@ -7,25 +7,34 @@ export default {
   },
   methods: {
     createRequest(url) {
+      const userAuthPayload = this.getAuthorizationPayload();
+
       return this.$http.create({
         baseURL: url,
         headers: {
-          'Content-type': 'application/json',
+          'Content-Type': 'application/json',
+          'access-token': userAuthPayload.token,
+          'token-type': 'Bearer',
+          client: userAuthPayload.clientToken,
+          expiry: userAuthPayload.expiry,
+          uid: userAuthPayload.uid,
         },
       });
     },
     requestWithBody(payload) {
+      const userAuthPayload = this.getAuthorizationPayload();
+
       return this.$http({
         method: payload.method,
         url: payload.url,
         data: payload.data,
         headers: {
           'Content-Type': 'application/json',
-          'access-token': payload.token,
+          'access-token': userAuthPayload.token,
           'token-type': 'Bearer',
-          client: payload.clientToken,
-          expiry: payload.expiry,
-          uid: this.$store.getters['user/getUserDetailsData']('email'),
+          client: userAuthPayload.clientToken,
+          expiry: userAuthPayload.expiry,
+          uid: userAuthPayload.uid,
         },
       });
     },
@@ -33,7 +42,7 @@ export default {
       if (!error.response) {
         this.errorMessage = 'A network error occurred. Please try again';
       } else if (error.response.data.errors) {
-        this.errorMessage = error.response.data.errors.full_messages.join(', ');
+        this.errorMessage = error.response.data.errors.join(', ');
       } else {
         this.errorMessage = 'An error occurred while performing request. Try again';
       }
@@ -76,6 +85,30 @@ export default {
       } else {
         this.errorMessage = 'Fill out form appropriately to submit it.';
       }
+    },
+    getAuthorizationPayload() {
+      const userPayload = this.$store.getters['user/getAllUserData'];
+
+      return {
+        token: userPayload.accessToken,
+        clientToken: userPayload.clientToken,
+        expiry: userPayload.expiry,
+        uid: userPayload.email,
+      };
+    },
+    deleteRequest(url) {
+      const userAuthPayload = this.getAuthorizationPayload();
+
+      this.$http.delete(url, {
+        headers: {
+          'Content-Type': 'application/json',
+          'access-token': userAuthPayload.token,
+          'token-type': 'Bearer',
+          client: userAuthPayload.clientToken,
+          expiry: userAuthPayload.expiry,
+          uid: userAuthPayload.uid,
+        },
+      });
     },
   },
 };
