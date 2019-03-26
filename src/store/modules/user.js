@@ -30,6 +30,7 @@ const state = {
 
 const getters = {
   getUserDetailsData: state => stateKey => state[stateKey],
+  getAllUserData: state => state,
 };
 
 const actions = {
@@ -44,7 +45,7 @@ const mutations = {
     });
   },
   resetUserDetailsData: (state, payload) => {
-    Object.keys(payload).forEach((item) => {
+    payload.forEach((item) => {
       state[item] = initialState[item];
     });
   },
