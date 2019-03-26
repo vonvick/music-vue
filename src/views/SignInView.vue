@@ -17,37 +17,34 @@
         </div>
         <form id="signin-form" v-on:submit.prevent="handleAuthentication">
           <div class="form-group col-12">
-            <input
-              class="form-control"
-              v-model="input.email"
-              type="email"
-              placeholder="Email"
-              required
-              v-validate="{ required: true, email: true }"
-              :class="{'is-danger': errors.has('email')}"
+            <input-field-atom
+              fieldType="email"
+              placeholder="Enter email address"
               name="email"
               id="email"
-            />
-            <span v-show="errors.has('email')" class="help is-danger-text">
-              {{ errors.first('email') }}
-            </span>
+              v-model="input.email"
+              v-validate="{required: true, email: true}"
+              :error="errors.has('email')"
+            >
+              <span v-show="errors.first('email')" class="help is-danger-text">
+                {{ errors.first('email') }}
+              </span>
+            </input-field-atom>
           </div>
           <div class="form-group col-12">
-            <input
-              class="form-control"
-              v-model="input.password"
-              type="password"
-              placeholder="Password"
-              required
-              autocomplete="password"
-              v-validate="{ required: true, min: 6}"
-              :class="{'is-danger': errors.has('password')}"
+            <input-field-atom
+              fieldType="password"
+              placeholder="Enter password"
               name="password"
               id="password"
-            />
-            <span v-show="errors.has('password')" class="help is-danger-text">
-              {{ errors.first('password') }}
-            </span>
+              v-model="input.password"
+              v-validate="{required: true, min: 6}"
+              :error="errors.has('password')"
+            >
+              <span v-show="errors.first('password')" class="help is-danger-text">
+                {{ errors.first('password') }}
+              </span>
+            </input-field-atom>
           </div>
 
           <div class="form-group col-12">
@@ -60,7 +57,6 @@
             </base-button>
           </div>
         </form>
-
         <div class="col-12">
           <p class="font10">
             Already have an account?
@@ -77,12 +73,14 @@ import apiRequestMixin from '@/mixins/request-mixin';
 
 // components
 import BaseButton from '@/components/atoms/BaseButton.vue';
+import InputFieldAtom from '@/components/atoms/InputFieldAtom.vue';
 
 export default {
   name: 'sign-in-view',
   mixins: [apiRequestMixin],
   components: {
     BaseButton,
+    InputFieldAtom,
   },
   data() {
     return {
@@ -92,7 +90,7 @@ export default {
       },
       signUpUrl: `${this.$api}/auth/sign_in`,
     };
-  },
+  }
 };
 </script>
 
